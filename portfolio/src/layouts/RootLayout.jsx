@@ -6,12 +6,12 @@ import Sidebar from "../components/Sidebar";
 
 export default function RootLayout() {
   return (
-    <Grid templateColumns="repeat(6, 1fr)">
-      <GridItem as="aside" colSpan={{ base: 6, lg: 2, xl: 1 }} minH="100vh">
+    <Grid templateColumns="repeat(6, 1fr)" h="100vh" overflow="hidden">
+      <GridItem as="aside" colSpan={{ base: 6, lg: 2, xl: 1 }}>
         <Sidebar />
       </GridItem>
 
-      <GridItem as="main" colSpan={{ base: 6, lg: 4, xl: 5 }}>
+      <GridItem as="main" colSpan={{ base: 6, lg: 4, xl: 5 }} overflowY="auto">
         <Outlet />
       </GridItem>
     </Grid>

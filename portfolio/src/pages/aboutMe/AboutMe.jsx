@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  ButtonGroup,
   Flex,
   Heading,
   Image,
@@ -22,8 +23,10 @@ export default function AboutMe() {
             I'm a frontend developer specialised in React. I built several web
             apps which you can check out on my Github or portfolio.
           </Text>
-          <Button>View Portfolio</Button>
-          <Button>View Resume</Button>
+          <ButtonGroup>
+            <Button>View Portfolio</Button>
+            <Button>View Resume</Button>
+          </ButtonGroup>
         </Box>
         <Box>
           <Image
