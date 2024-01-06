@@ -1,6 +1,5 @@
 import { NavLink as RouterNavLink, useNavigate } from "react-router-dom";
 import {
-  Box,
   Button,
   Flex,
   HStack,
@@ -28,7 +27,7 @@ export default function Sidebar() {
       flexDir="column"
       align="center"
       justify="space-evenly"
-      bg="#22C35E"
+      bg="green.500"
       color="white"
       p={3}
       minH="100vh"
