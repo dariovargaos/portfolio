@@ -1,6 +1,19 @@
-import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
+import { useFirestore } from "../../hooks/useFirestore";
+import {
+  Box,
+  Button,
+  Card,
+  CardBody,
+  Flex,
+  Heading,
+  Image,
+  SimpleGrid,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 export default function AboutMe() {
+  const { projects } = useFirestore();
   return (
     <Box>
       <Flex
@@ -11,18 +24,40 @@ export default function AboutMe() {
         bg="#FAFAFA"
         minH="200px"
       >
-        <Heading color="black" fontWeight="bold">
-          Portfolio
-        </Heading>
-        <Text>Want some help building your software?</Text>
+        <Heading fontWeight="bold">Portfolio</Heading>
+        <Text>
+          Welcome to my online portfolio. Want some help building your software?
+        </Text>
         <Button>Hire me</Button>
       </Flex>
 
       <Flex flexDir="column" p={8} gap={4}>
-        <Heading borderLeft="5px solid #54B689" size="md">
-          My Projects
-        </Heading>
-        <Text>Ovdje ide grid sa slikama projekata i pojasnjenjima</Text>
+        <Flex gap={5}>
+          <Box borderLeft="5px solid #54B689"></Box>
+          <Heading size="lg">My Projects</Heading>
+        </Flex>
+
+        <SimpleGrid minChildWidth="150px" spacing="40px">
+          {projects &&
+            projects.map((project) => (
+              <Card
+                key={project.id}
+                direction="column"
+                overflow="hidden"
+                variant="outline"
+              >
+                <Image src={project.image} w="100%" />
+
+                <Stack>
+                  <CardBody>
+                    <Heading size="md">{project.name}</Heading>
+
+                    <Text py="2">{project.description}</Text>
+                  </CardBody>
+                </Stack>
+              </Card>
+            ))}
+        </SimpleGrid>
       </Flex>
     </Box>
   );

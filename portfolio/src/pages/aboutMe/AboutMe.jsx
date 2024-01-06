@@ -1,4 +1,3 @@
-import { useStorage } from "../../hooks/useStorage";
 import { useFirestore } from "../../hooks/useFirestore";
 import {
   Box,
@@ -11,8 +10,6 @@ import {
   Heading,
   Icon,
   Image,
-  List,
-  ListItem,
   SimpleGrid,
   Stack,
   Text,
@@ -32,7 +29,6 @@ import { AiOutlineConsoleSql } from "react-icons/ai";
 import { SiMantine } from "react-icons/si";
 
 export default function AboutMe() {
-  const { data: coverImages, isLoading, error } = useStorage();
   const { projects } = useFirestore();
   return (
     <Box>
@@ -63,9 +59,12 @@ export default function AboutMe() {
       </Flex>
 
       <Flex flexDir="column" p={8} gap={4}>
-        <Heading borderLeft="5px solid #54B689">What I do</Heading>
+        <Flex gap={5}>
+          <Box borderLeft="5px solid #54B689"></Box>
+          <Heading size="lg">What I do</Heading>
+        </Flex>
         <Text>
-          I`&apos;`m bachelor graduate at FERIT Osijek and I'm also finished 1
+          I&apos;m bachelor graduate at FERIT Osijek and I'm also finished 1
           year education for Fronend development at University of Algebra.
           Currently looking for job so I can learn and grow in the fronend
           field. Below is a quick overview of my main technical skill sets and
@@ -122,8 +121,11 @@ export default function AboutMe() {
         </Flex>
       </Flex>
 
-      <Flex flexDir="column" p={8} gap={4}>
-        <Heading borderLeft="5px solid #54B689">Featured Projects</Heading>
+      <Flex flexDir="column" p={8} gap={5}>
+        <Flex gap={5}>
+          <Box borderLeft="5px solid #54B689"></Box>
+          <Heading size="lg">Featured Projects</Heading>
+        </Flex>
         <SimpleGrid minChildWidth="150px" spacing="40px">
           {projects &&
             projects.map((project) => (
@@ -147,6 +149,9 @@ export default function AboutMe() {
               </Card>
             ))}
         </SimpleGrid>
+        <Flex justify="center">
+          <Button leftIcon={<FaArrowAltCircleRight />}>View Portfolio</Button>
+        </Flex>
       </Flex>
     </Box>
   );
