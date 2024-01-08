@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
 import {
   Box,
@@ -14,6 +15,7 @@ import {
 
 export default function AboutMe() {
   const { projects } = useFirestore();
+  const navigate = useNavigate();
   return (
     <Box>
       <Flex
@@ -37,14 +39,14 @@ export default function AboutMe() {
           <Heading size="lg">My Projects</Heading>
         </Flex>
 
-        <SimpleGrid minChildWidth="150px" spacing="40px">
+        <SimpleGrid minChildWidth="300px" spacing="40px">
           {projects &&
             projects.map((project) => (
               <Card
                 key={project.id}
                 direction="column"
-                overflow="hidden"
-                variant="outline"
+                _hover={{ cursor: "pointer" }}
+                onClick={() => navigate(`/project/${project.id}`)}
               >
                 <Image src={project.image} w="100%" />
 

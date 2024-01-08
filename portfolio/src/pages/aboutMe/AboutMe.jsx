@@ -33,6 +33,10 @@ import { SiMantine } from "react-icons/si";
 export default function AboutMe() {
   const { projects, isLoading } = useFirestore();
   const navigate = useNavigate();
+
+  const featuredProjects = projects.filter(
+    (project) => project.featured === true
+  );
   return (
     <Box>
       <Flex align="center" gap={5} bg="#FAFAFA" minH="300px" p={8}>
@@ -130,31 +134,28 @@ export default function AboutMe() {
           <Heading size="lg">Featured Projects</Heading>
         </Flex>
         <SimpleGrid minChildWidth="150px" spacing="40px">
-          {projects &&
-            projects.map((project) => (
-              <Card
-                key={project.id}
-                direction="column"
-                _hover={{ cursor: "pointer" }}
-                onClick={() => navigate(`/project/${project.id}`)}
-              >
-                {isLoading ? (
-                  <Spinner color="#38A169" />
-                ) : (
-                  <Image src={project.image} w="100%" />
-                )}
+          {featuredProjects.map((project) => (
+            <Card
+              key={project.id}
+              direction="column"
+              _hover={{ cursor: "pointer" }}
+              onClick={() => navigate(`/project/${project.id}`)}
+            >
+              {isLoading ? (
+                <Spinner color="#38A169" />
+              ) : (
+                <Image src={project.image} w="100%" />
+              )}
 
-                <Stack>
-                  <CardBody>
-                    <Heading size="md">{project.name}</Heading>
+              <Stack>
+                <CardBody>
+                  <Heading size="md">{project.name}</Heading>
 
-                    <Text py="2">
-                      {project.description.substring(0, 100)}...
-                    </Text>
-                  </CardBody>
-                </Stack>
-              </Card>
-            ))}
+                  <Text py="2">{project.description.substring(0, 100)}...</Text>
+                </CardBody>
+              </Stack>
+            </Card>
+          ))}
         </SimpleGrid>
         <Flex justify="center">
           <Button leftIcon={<FaArrowAltCircleRight />}>View Portfolio</Button>
