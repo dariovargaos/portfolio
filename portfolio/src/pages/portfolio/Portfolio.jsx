@@ -52,7 +52,9 @@ export default function AboutMe() {
                   <CardBody>
                     <Heading size="md">{project.name}</Heading>
 
-                    <Text py="2">{project.description}</Text>
+                    <Text py="2">
+                      {project.description.substring(0, 100)}...
+                    </Text>
                   </CardBody>
                 </Stack>
               </Card>

@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
 import {
   Box,
@@ -31,6 +32,7 @@ import { SiMantine } from "react-icons/si";
 
 export default function AboutMe() {
   const { projects, isLoading } = useFirestore();
+  const navigate = useNavigate();
   return (
     <Box>
       <Flex align="center" gap={5} bg="#FAFAFA" minH="300px" p={8}>
@@ -42,8 +44,8 @@ export default function AboutMe() {
             Junior Frontend Developer
           </Text>
           <Text>
-            I'm a frontend developer specialised in React. I built several web
-            apps which you can check out on my Github or portfolio.
+            I&apos;m a frontend developer specialised in React. I built several
+            web apps which you can check out on my Github or portfolio.
           </Text>
           <ButtonGroup>
             <Button leftIcon={<FaArrowAltCircleRight />}>View Portfolio</Button>
@@ -133,8 +135,8 @@ export default function AboutMe() {
               <Card
                 key={project.id}
                 direction="column"
-                overflow="hidden"
-                variant="outline"
+                _hover={{ cursor: "pointer" }}
+                onClick={() => navigate(`/project/${project.id}`)}
               >
                 {isLoading ? (
                   <Spinner color="#38A169" />
@@ -147,7 +149,7 @@ export default function AboutMe() {
                     <Heading size="md">{project.name}</Heading>
 
                     <Text py="2">
-                      {project.description.substring(0, 10)}...
+                      {project.description.substring(0, 100)}...
                     </Text>
                   </CardBody>
                 </Stack>

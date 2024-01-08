@@ -11,6 +11,7 @@ import AboutMe from "./pages/aboutMe/AboutMe";
 import Portfolio from "./pages/portfolio/Portfolio";
 import Resume from "./pages/resume/Resume";
 import Contact from "./pages/contact/Contact";
+import Project from "./pages/project/Project";
 
 function App() {
   const router = createBrowserRouter(
@@ -20,6 +21,7 @@ function App() {
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/resume" element={<Resume />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/project/:projectId" element={<Project />} />
       </Route>
     )
   );
