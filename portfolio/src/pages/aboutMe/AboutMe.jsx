@@ -11,6 +11,7 @@ import {
   Icon,
   Image,
   SimpleGrid,
+  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
@@ -29,7 +30,7 @@ import { AiOutlineConsoleSql } from "react-icons/ai";
 import { SiMantine } from "react-icons/si";
 
 export default function AboutMe() {
-  const { projects } = useFirestore();
+  const { projects, isLoading } = useFirestore();
   return (
     <Box>
       <Flex align="center" gap={5} bg="#FAFAFA" minH="300px" p={8}>
@@ -135,7 +136,11 @@ export default function AboutMe() {
                 overflow="hidden"
                 variant="outline"
               >
-                <Image src={project.image} w="100%" />
+                {isLoading ? (
+                  <Spinner color="#38A169" />
+                ) : (
+                  <Image src={project.image} w="100%" />
+                )}
 
                 <Stack>
                   <CardBody>
