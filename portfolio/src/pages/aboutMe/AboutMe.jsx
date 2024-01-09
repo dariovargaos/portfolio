@@ -52,16 +52,24 @@ export default function AboutMe() {
             web apps which you can check out on my Github or portfolio.
           </Text>
           <ButtonGroup>
-            <Button leftIcon={<FaArrowAltCircleRight />}>View Portfolio</Button>
-            <Button leftIcon={<IoDocumentText />}>View Resume</Button>
+            <Button
+              leftIcon={<FaArrowAltCircleRight />}
+              onClick={() => navigate("/portfolio")}
+            >
+              View Portfolio
+            </Button>
+            <Button
+              leftIcon={<IoDocumentText />}
+              onClick={() => navigate("/resume")}
+              bg="#4F4F4F"
+              _hover={{ bg: "#4F4F3F" }}
+            >
+              View Resume
+            </Button>
           </ButtonGroup>
         </Flex>
         <Box>
-          <Image
-            boxSize="250px"
-            src="https://bit.ly/dan-abramov"
-            alt="Dan Abramov"
-          />
+          <Image w="250px" src="https://bit.ly/dan-abramov" alt="Dan Abramov" />
         </Box>
       </Flex>
 
@@ -71,12 +79,12 @@ export default function AboutMe() {
           <Heading size="lg">What I do</Heading>
         </Flex>
         <Text>
-          I&apos;m bachelor graduate at FERIT Osijek and I'm also finished 1
-          year education for Fronend development at University of Algebra.
-          Currently looking for job so I can learn and grow in the fronend
-          field. Below is a quick overview of my main technical skill sets and
-          technologies I use. Want to find out more about my experience? Check
-          out my online resume and project portfolio.
+          I&apos;m bachelor graduate at FERIT Osijek and I also finished 1 year
+          education for Fronend development at University of Algebra. Currently
+          looking for job so I can learn and grow in the frontend field. Below
+          is a quick overview of my main technical skill sets and technologies I
+          use. Want to find out more about my experience? Check out my online
+          resume and project portfolio.
         </Text>
         <Flex justify="space-evenly">
           <Flex flexDir="column" align="center">
@@ -158,7 +166,12 @@ export default function AboutMe() {
           ))}
         </SimpleGrid>
         <Flex justify="center">
-          <Button leftIcon={<FaArrowAltCircleRight />}>View Portfolio</Button>
+          <Button
+            leftIcon={<FaArrowAltCircleRight />}
+            onClick={() => navigate("/portfolio")}
+          >
+            View Portfolio
+          </Button>
         </Flex>
       </Flex>
     </Box>

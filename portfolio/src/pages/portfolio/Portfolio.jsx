@@ -9,12 +9,13 @@ import {
   Heading,
   Image,
   SimpleGrid,
+  Spinner,
   Stack,
   Text,
 } from "@chakra-ui/react";
 
 export default function AboutMe() {
-  const { projects } = useFirestore();
+  const { projects, isLoading } = useFirestore();
   const navigate = useNavigate();
   return (
     <Box>
@@ -28,7 +29,8 @@ export default function AboutMe() {
       >
         <Heading fontWeight="bold">Portfolio</Heading>
         <Text>
-          Welcome to my online portfolio. Want some help building your software?
+          Welcome to my online portfolio. These are my personal projects which
+          you can check out live or see the code on my github.
         </Text>
         <Button>Hire me</Button>
       </Flex>
@@ -48,7 +50,11 @@ export default function AboutMe() {
                 _hover={{ cursor: "pointer" }}
                 onClick={() => navigate(`/project/${project.id}`)}
               >
-                <Image src={project.image} w="100%" />
+                {isLoading ? (
+                  <Spinner color="#38A169" />
+                ) : (
+                  <Image src={project.image} w="100%" />
+                )}
 
                 <Stack>
                   <CardBody>

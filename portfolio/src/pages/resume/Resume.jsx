@@ -7,6 +7,9 @@ import { FaFilePdf } from "react-icons/fa6";
 
 export default function AboutMe() {
   pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
+  const cvURL =
+    "https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/CV%20English%20-%20Dario%20Varga.pdf?alt=media&token=8c86e3ce-4c0f-4335-8762-ba122b1bc68d";
   return (
     <Box>
       <Flex
@@ -20,7 +23,14 @@ export default function AboutMe() {
         <Heading color="black" fontWeight="bold">
           Online Resume
         </Heading>
-        <Button leftIcon={<FaFilePdf />}>Download PDF Version</Button>
+        <Button
+          leftIcon={<FaFilePdf />}
+          as="a"
+          href={cvURL}
+          download="Dario_Varga_CV.pdf"
+        >
+          Download PDF Version
+        </Button>
       </Flex>
 
       <Flex p={8} gap={4}>

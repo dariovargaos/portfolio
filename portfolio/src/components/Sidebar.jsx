@@ -40,8 +40,8 @@ export default function Sidebar() {
         alt="Dan Abramov"
       />
       <Text>
-        Hi, my name is Dario Varga and I'm a junior frontend developer. Welcome
-        to my personal website!
+        Hi, my name is Dario Varga and I&apos;m a junior frontend developer.
+        Welcome to my personal website!
       </Text>
       <HStack spacing={4}>
         <Link
@@ -120,13 +120,6 @@ export default function Sidebar() {
           Contact
         </Flex>
       </Link>
-      <Button
-        onClick={() => navigate("/contact")}
-        leftIcon={<FaLocationArrow />}
-        backgroundColor="green.300"
-      >
-        Hire me
-      </Button>
     </Flex>
   );
 }

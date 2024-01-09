@@ -1,36 +1,34 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
 import {
   Box,
+  Button,
   Flex,
   Heading,
   Image,
   Link,
-  List,
   ListItem,
   Text,
   UnorderedList,
 } from "@chakra-ui/react";
 
+//icons
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+
 export default function Project() {
   const { projectId } = useParams();
   const { document: project, error } = useDocument("projects", projectId);
+  const navigate = useNavigate();
   return (
-    <Flex minH="100vh" align="center">
-      {/* <Flex
-        flexDir="column"
-        justify="center"
-        align="center"
-        gap={5}
-        bg="#FAFAFA"
-        minH="200px"
-      >
-        <Heading color="black">{project?.name}</Heading>
-        <Text color="gray.500" fontWeight="300">
-          {project?.description}
-        </Text>
-      </Flex> */}
-
+    <Flex flexDir="column" minH="100vh" justify="center" gap={5}>
+      <Flex p={4}>
+        <Button
+          onClick={() => navigate("/portfolio")}
+          leftIcon={<FaArrowAltCircleLeft />}
+        >
+          Portfolio
+        </Button>
+      </Flex>
       <Box>
         <Flex p={4} bg="#FAFAFA" justify="space-evenly" align="center" gap={5}>
           <Image src={project?.image} w="40%" />
@@ -38,9 +36,15 @@ export default function Project() {
           <Flex flexDir="column" gap={5}>
             <Heading size="lg">{project?.name}</Heading>
             <Text>
-              Website:{" "}
+              Live demo:{" "}
               <Link href={project?.website} isExternal color="#38A169">
                 {project?.website}
+              </Link>
+            </Text>
+            <Text>
+              Github repo:{" "}
+              <Link href={project?.github} isExternal color="#38A169">
+                {project?.github}
               </Link>
             </Text>
             <Text>Description: {project?.description}</Text>
