@@ -1,15 +1,9 @@
-import { Document, Page } from "react-pdf";
-import { pdfjs } from "react-pdf";
 import { Box, Button, Flex, Heading, Image } from "@chakra-ui/react";
 
 //icons
 import { FaFilePdf } from "react-icons/fa6";
 
 export default function AboutMe() {
-  pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
-
-  const cvURL =
-    "https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/CV%20English%20-%20Dario%20Varga.pdf?alt=media&token=8c86e3ce-4c0f-4335-8762-ba122b1bc68d";
   return (
     <Box>
       <Flex
@@ -26,8 +20,9 @@ export default function AboutMe() {
         <Button
           leftIcon={<FaFilePdf />}
           as="a"
-          href={cvURL}
-          download="Dario_Varga_CV.pdf"
+          href="https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/CV%20English%20-%20Dario%20Varga.pdf?alt=media&token=2b5cc7a4-bf38-4171-aa5e-15c04c068f15"
+          download="Varga_Dario_CV"
+          target="blank"
         >
           Download PDF Version
         </Button>
