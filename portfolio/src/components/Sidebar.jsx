@@ -30,7 +30,7 @@ import {
   FaLaptopCode,
 } from "react-icons/fa";
 import { IoDocumentText, IoMail } from "react-icons/io5";
-import { HamburgerIcon, ArrowLeftIcon } from "@chakra-ui/icons";
+import { ArrowLeftIcon } from "@chakra-ui/icons";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);

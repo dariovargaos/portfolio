@@ -15,6 +15,7 @@ import {
   Spinner,
   Stack,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
 //icons
@@ -37,6 +38,11 @@ export default function AboutMe() {
   const featuredProjects = projects.filter(
     (project) => project.featured === true
   );
+
+  const isSmallScreen = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
   return (
     <Box>
       <Flex align="center" gap={5} bg="#FAFAFA" minH="300px" p={8}>
@@ -68,9 +74,15 @@ export default function AboutMe() {
             </Button>
           </ButtonGroup>
         </Flex>
-        <Box>
-          <Image w="250px" src="https://bit.ly/dan-abramov" alt="Dan Abramov" />
-        </Box>
+        {!isSmallScreen && (
+          <Box>
+            <Image
+              w="250px"
+              src="https://bit.ly/dan-abramov"
+              alt="Dan Abramov"
+            />
+          </Box>
+        )}
       </Flex>
 
       <Flex flexDir="column" p={8} gap={4}>
@@ -86,7 +98,11 @@ export default function AboutMe() {
           use. Want to find out more about my experience? Check out my online
           resume and project portfolio.
         </Text>
-        <Flex justify="space-evenly">
+        <Flex
+          justify={isSmallScreen ? "" : "space-evenly"}
+          flexWrap={isSmallScreen ? "wrap" : ""}
+          gap={isSmallScreen ? 4 : 0}
+        >
           <Flex flexDir="column" align="center">
             <HStack>
               <Icon as={FaHtml5} boxSize={7} color="#FC490B" />
