@@ -1,9 +1,20 @@
-import { Box, Button, Flex, Heading, Image } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Image,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 
 //icons
 import { FaFilePdf } from "react-icons/fa6";
 
 export default function AboutMe() {
+  const isSmallScreen = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
   return (
     <Box>
       <Flex
@@ -28,10 +39,10 @@ export default function AboutMe() {
         </Button>
       </Flex>
 
-      <Flex p={8} gap={4}>
+      <Flex p={8}>
         <Flex boxShadow="md" justify="center">
           <Image
-            w="70%"
+            w={isSmallScreen ? "100%" : "70%"}
             src="https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/Professional%20CV%20Resume%20image.png?alt=media&token=5e804952-eb5e-46a5-b9b7-20f7a08ea8d2"
           />
         </Flex>

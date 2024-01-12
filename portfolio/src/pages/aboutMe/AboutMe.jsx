@@ -32,10 +32,10 @@ import { AiOutlineConsoleSql } from "react-icons/ai";
 import { SiMantine } from "react-icons/si";
 
 export default function AboutMe() {
-  const { projects, isLoading } = useFirestore();
+  const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
 
-  const featuredProjects = projects.filter(
+  const featuredProjects = projects?.filter(
     (project) => project.featured === true
   );
 
@@ -92,7 +92,7 @@ export default function AboutMe() {
         </Flex>
         <Text>
           I&apos;m bachelor graduate at FERIT Osijek and I also finished 1 year
-          education for Fronend development at University of Algebra. Currently
+          education for Frontend development at University of Algebra. Currently
           looking for job so I can learn and grow in the frontend field. Below
           is a quick overview of my main technical skill sets and technologies I
           use. Want to find out more about my experience? Check out my online
@@ -157,8 +157,11 @@ export default function AboutMe() {
           <Box borderLeft="5px solid #54B689"></Box>
           <Heading size="lg">Featured Projects</Heading>
         </Flex>
-        <SimpleGrid minChildWidth="150px" spacing="40px">
-          {featuredProjects.map((project) => (
+        <SimpleGrid
+          minChildWidth={isSmallScreen ? "250px" : "150px"}
+          spacing="40px"
+        >
+          {featuredProjects?.map((project) => (
             <Card
               key={project.id}
               direction="column"

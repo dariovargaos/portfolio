@@ -12,11 +12,17 @@ import {
   Spinner,
   Stack,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 
 export default function AboutMe() {
-  const { projects, isLoading } = useFirestore();
+  const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
+
+  const isSmallScreen = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
   return (
     <Box>
       <Flex
@@ -26,6 +32,7 @@ export default function AboutMe() {
         gap={5}
         bg="#FAFAFA"
         minH="200px"
+        p={isSmallScreen ? 3 : 0}
       >
         <Heading fontWeight="bold">Portfolio</Heading>
         <Text>

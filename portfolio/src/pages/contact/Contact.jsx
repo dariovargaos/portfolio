@@ -12,6 +12,7 @@ import {
   Link,
   Text,
   Textarea,
+  useBreakpointValue,
   useToast,
 } from "@chakra-ui/react";
 
@@ -24,6 +25,11 @@ export default function Contact() {
   const [message, setMessage] = useState("");
 
   const toast = useToast();
+
+  const isSmallScreen = useBreakpointValue({
+    base: true,
+    lg: false,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -79,6 +85,7 @@ export default function Contact() {
         gap={5}
         bg="#FAFAFA"
         minH="200px"
+        p={isSmallScreen ? 3 : 0}
       >
         <Heading color="black" fontWeight="bold">
           Contact
@@ -126,12 +133,24 @@ export default function Contact() {
         </Flex>
       </Flex>
 
-      <Flex flexDir="column" p={8} gap={5} w="100%" align="center">
-        <Heading>Get in Touch</Heading>
+      <Flex flexDir="column" p={8} gap={5}>
+        <Heading alignSelf="center">Get in Touch</Heading>
 
-        <form onSubmit={handleSubmit} style={{ width: "60%" }}>
-          <Flex justify="center" gap={5}>
-            <FormControl>
+        <form
+          onSubmit={handleSubmit}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <Flex
+            flexDir={isSmallScreen ? "column" : "row"}
+            gap={5}
+            w={isSmallScreen ? "100%" : "70%"}
+            alignSelf="center"
+          >
+            <FormControl justifySelf="center">
               <Input
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -148,7 +167,12 @@ export default function Contact() {
               />
             </FormControl>
           </Flex>
-          <Flex justify="center" mt={3}>
+          <Flex
+            flexDir="column"
+            gap={3}
+            w={isSmallScreen ? "100%" : "70%"}
+            alignSelf="center"
+          >
             <FormControl>
               <Textarea
                 value={message}
@@ -157,10 +181,10 @@ export default function Contact() {
                 rows="10"
               />
             </FormControl>
+            <Button type="submit" alignSelf="flex-start">
+              Send Now
+            </Button>
           </Flex>
-          <Button type="submit" mt={3}>
-            Send Now
-          </Button>
         </form>
       </Flex>
     </Box>

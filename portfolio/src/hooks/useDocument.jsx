@@ -1,38 +1,25 @@
-import { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import { db } from "../firebase/config";
-import { onSnapshot, doc } from "firebase/firestore";
+import { getDoc, doc } from "firebase/firestore";
+
+const fetchDocument = async ({ queryKey }) => {
+  const [_, collectionName, id] = queryKey;
+
+  const docRef = doc(db, collectionName, id);
+  const docSnapshot = await getDoc(docRef);
+
+  if (docSnapshot.exists()) {
+    return { id: docSnapshot.id, ...docSnapshot.data() };
+  } else {
+    throw new Error("Document does not exist.");
+  }
+};
 
 export const useDocument = (collectionName, id) => {
-  const [document, setDocument] = useState(null);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    if (!id) {
-      setDocument(null);
-      setError(null);
-      return;
-    }
-
-    const docRef = doc(db, collectionName, id);
-    const unsubscribe = onSnapshot(
-      docRef,
-      (snapshot) => {
-        if (snapshot.data()) {
-          setDocument({ ...snapshot.data(), id: snapshot.id });
-          setError(null);
-        } else {
-          setDocument(null);
-          setError("Cant fetch document data.");
-        }
-      },
-      (error) => {
-        console.log(error.message);
-        setError("Could not get the data");
-      }
-    );
-
-    return () => unsubscribe();
-  }, [collectionName, id]);
-
-  return { document, error };
+  return useQuery({
+    queryKey: ["document", collectionName, id],
+    queryFn: () =>
+      fetchDocument({ queryKey: ["document", collectionName, id] }),
+    enabled: !!id,
+  });
 };
