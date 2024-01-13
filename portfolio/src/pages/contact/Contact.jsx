@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import {
@@ -20,9 +20,12 @@ import {
 import { FaInstagram, FaLinkedin, FaFacebook, FaGithub } from "react-icons/fa";
 
 export default function Contact() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const toast = useToast();
 
@@ -31,9 +34,7 @@ export default function Contact() {
     lg: false,
   });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const onSubmit = (data) => {
     //services
     const serviceId = "service_hkgfh5a";
     const templateId = "template_ta9ndg7";
@@ -41,11 +42,11 @@ export default function Contact() {
 
     //create object that contains dynamic template params
     const templateParams = {
-      from_name: name,
-      from_email: email,
+      from_name: data.name,
+      from_email: data.email,
       to_name: "Dario",
-      message: message,
-      reply_to: email,
+      message: data.message,
+      reply_to: data.email,
     };
 
     //send the email
@@ -53,9 +54,7 @@ export default function Contact() {
       .send(serviceId, templateId, templateParams, publicKey)
       .then((response) => {
         console.log("Email sent successfully: ", response);
-        setName("");
-        setEmail("");
-        setMessage("");
+        reset();
         toast({
           title: "Message is sent.",
           description: "Thank you for reaching out!",
@@ -137,7 +136,7 @@ export default function Contact() {
         <Heading alignSelf="center">Get in Touch</Heading>
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmit(onSubmit)}
           style={{
             display: "flex",
             flexDirection: "column",
@@ -152,19 +151,25 @@ export default function Contact() {
           >
             <FormControl justifySelf="center">
               <Input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
+                {...register("name", { required: "Name is required." })}
                 placeholder="Name"
                 type="text"
               />
+              {errors.name && <Text color="red">{errors.name.message}</Text>}
             </FormControl>
             <FormControl>
               <Input
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email", {
+                  required: "Email is required.",
+                  pattern: {
+                    value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
+                    message: "Invalid email address",
+                  },
+                })}
                 placeholder="Email"
                 type="email"
               />
+              {errors.email && <Text color="red">{errors.email.message}</Text>}
             </FormControl>
           </Flex>
           <Flex
@@ -175,11 +180,16 @@ export default function Contact() {
           >
             <FormControl>
               <Textarea
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
+                {...register("message", {
+                  required: "Message is required.",
+                })}
                 placeholder="Enter your Message"
+                type="text"
                 rows="10"
               />
+              {errors.message && (
+                <Text color="red">{errors.message.message}</Text>
+              )}
             </FormControl>
             <Button type="submit" alignSelf="flex-start">
               Send Now
