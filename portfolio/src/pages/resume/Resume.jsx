@@ -1,3 +1,4 @@
+import { useStorage } from "../../hooks/useStorage";
 import {
   Box,
   Button,
@@ -11,6 +12,8 @@ import {
 import { FaFilePdf } from "react-icons/fa6";
 
 export default function AboutMe() {
+  // const { data, isLoading, error } = useStorage();
+
   const isSmallScreen = useBreakpointValue({
     base: true,
     lg: false,
