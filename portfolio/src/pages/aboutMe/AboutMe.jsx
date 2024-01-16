@@ -68,7 +68,7 @@ export default function AboutMe() {
               leftIcon={<IoDocumentText />}
               onClick={() => navigate("/resume")}
               bg="#4F4F4F"
-              _hover={{ bg: "#4F4F3F" }}
+              _hover={{ bg: "#373737" }}
             >
               View Resume
             </Button>

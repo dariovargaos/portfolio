@@ -11,13 +11,9 @@ import {
   useBreakpointValue,
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
   Button,
-  Box,
 } from "@chakra-ui/react";
 
 //icons
@@ -31,6 +27,7 @@ import {
 } from "react-icons/fa";
 import { IoDocumentText, IoMail } from "react-icons/io5";
 import { ArrowLeftIcon } from "@chakra-ui/icons";
+import { BsLinkedin } from "react-icons/bs";
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -62,8 +59,8 @@ export default function Sidebar() {
             <Link
               as={RouterNavLink}
               to="/"
-              _hover={{ color: "green" }}
-              _activeLink={{ color: "green" }}
+              _hover={{ color: "#004830" }}
+              _activeLink={{ color: "#004830" }}
             >
               <Flex flexDir="column" align="center">
                 <Icon as={FaUser} />
@@ -74,8 +71,8 @@ export default function Sidebar() {
             <Link
               as={RouterNavLink}
               to="/portfolio"
-              _hover={{ color: "green" }}
-              _activeLink={{ color: "green" }}
+              _hover={{ color: "#004830" }}
+              _activeLink={{ color: "#004830" }}
             >
               <Flex flexDir="column" align="center">
                 <Icon as={FaLaptopCode} />
@@ -85,8 +82,8 @@ export default function Sidebar() {
             <Link
               as={RouterNavLink}
               to="/resume"
-              _hover={{ color: "green" }}
-              _activeLink={{ color: "green" }}
+              _hover={{ color: "#004830" }}
+              _activeLink={{ color: "#004830" }}
             >
               <Flex flexDir="column" align="center">
                 <Icon as={IoDocumentText} />
@@ -96,8 +93,8 @@ export default function Sidebar() {
             <Link
               as={RouterNavLink}
               to="/contact"
-              _hover={{ color: "green" }}
-              _activeLink={{ color: "green" }}
+              _hover={{ color: "#004830" }}
+              _activeLink={{ color: "#004830" }}
             >
               <Flex flexDir="column" align="center">
                 <Icon as={IoMail} />
@@ -182,7 +179,7 @@ export default function Sidebar() {
               to="https://www.linkedin.com/in/dario-varga/"
               target="_blank"
             >
-              <Icon as={FaLinkedin} boxSize={7} />
+              <Icon as={BsLinkedin} boxSize={7} />
             </Link>
 
             <Link
@@ -211,8 +208,8 @@ export default function Sidebar() {
           <Link
             as={RouterNavLink}
             to="/"
-            _hover={{ color: "green" }}
-            _activeLink={{ color: "green" }}
+            _hover={{ color: "#004830" }}
+            _activeLink={{ color: "#004830" }}
           >
             <Flex align="center">
               <Icon as={FaUser} mr={2} />
@@ -223,8 +220,8 @@ export default function Sidebar() {
           <Link
             as={RouterNavLink}
             to="/portfolio"
-            _hover={{ color: "green" }}
-            _activeLink={{ color: "green" }}
+            _hover={{ color: "#004830" }}
+            _activeLink={{ color: "#004830" }}
           >
             <Flex align="center">
               <Icon as={FaLaptopCode} mr={2} />
@@ -234,8 +231,8 @@ export default function Sidebar() {
           <Link
             as={RouterNavLink}
             to="/resume"
-            _hover={{ color: "green" }}
-            _activeLink={{ color: "green" }}
+            _hover={{ color: "#004830" }}
+            _activeLink={{ color: "#004830" }}
           >
             <Flex align="center">
               <Icon as={IoDocumentText} mr={2} />
@@ -245,8 +242,8 @@ export default function Sidebar() {
           <Link
             as={RouterNavLink}
             to="/contact"
-            _hover={{ color: "green" }}
-            _activeLink={{ color: "green" }}
+            _hover={{ color: "#004830" }}
+            _activeLink={{ color: "#004830" }}
           >
             <Flex align="center">
               <Icon as={IoMail} mr={2} />

@@ -7,8 +7,18 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const customTheme = extendTheme({
   components: {
     Button: {
+      baseStyle: {
+        backgroundColor: "#38A169",
+        color: "white",
+        _hover: {
+          backgroundColor: "#2E8B57",
+        },
+      },
+      variants: {
+        base: {},
+      },
       defaultProps: {
-        colorScheme: "whatsapp",
+        variant: "base",
       },
     },
   },

@@ -15,6 +15,9 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
+//icons
+import { FaLocationArrow } from "react-icons/fa6";
+
 export default function AboutMe() {
   const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
@@ -39,7 +42,12 @@ export default function AboutMe() {
           Welcome to my online portfolio. These are my personal projects which
           you can check out live or see the code on my github.
         </Text>
-        <Button>Hire me</Button>
+        <Button
+          onClick={() => navigate("/contact")}
+          leftIcon={<FaLocationArrow />}
+        >
+          Hire me
+        </Button>
       </Flex>
 
       <Flex flexDir="column" p={8} gap={4}>

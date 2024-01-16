@@ -89,9 +89,9 @@ export default function Contact() {
         <Heading color="black" fontWeight="bold">
           Contact
         </Heading>
-        <Text>
-          Interested in hiring me for your project or just want to say hi? You
-          can fill in the contact form below or send me an email to{" "}
+        <Text textAlign={isSmallScreen ? "center" : ""}>
+          Interested in hiring me or just want to say hi? You can fill in the
+          contact form below or send me an email to{" "}
           <Link color="#38A169" href="mailto:dario.varga2012@gmail.com">
             dario.varga2012@gmail.com
           </Link>
@@ -105,7 +105,12 @@ export default function Contact() {
             to="https://www.linkedin.com/in/dario-varga/"
             target="_blank"
           >
-            <Icon as={FaLinkedin} boxSize={7} color="#38A169" />
+            <Icon
+              as={FaLinkedin}
+              boxSize={7}
+              color="#38A169"
+              _hover={{ color: "#2E8B57" }}
+            />
           </Link>
 
           <Link
@@ -113,21 +118,36 @@ export default function Contact() {
             to="https://github.com/dariovargaos"
             target="_blank"
           >
-            <Icon as={FaGithub} boxSize={7} color="#38A169" />
+            <Icon
+              as={FaGithub}
+              boxSize={7}
+              color="#38A169"
+              _hover={{ color: "#2E8B57" }}
+            />
           </Link>
           <Link
             as={RouterNavLink}
             to="https://www.facebook.com/dario.varga.1/"
             target="_blank"
           >
-            <Icon as={FaFacebook} boxSize={7} color="#38A169" />
+            <Icon
+              as={FaFacebook}
+              boxSize={7}
+              color="#38A169"
+              _hover={{ color: "#2E8B57" }}
+            />
           </Link>
           <Link
             as={RouterNavLink}
             to="https://www.instagram.com/dario.varga/"
             target="_blank"
           >
-            <Icon as={FaInstagram} boxSize={7} color="#38A169" />
+            <Icon
+              as={FaInstagram}
+              boxSize={7}
+              color="#38A169"
+              _hover={{ color: "#2E8B57" }}
+            />
           </Link>
         </Flex>
       </Flex>
