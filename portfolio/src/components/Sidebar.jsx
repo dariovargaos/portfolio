@@ -40,6 +40,18 @@ export default function Sidebar() {
     base: true,
     lg: false,
   });
+
+  const linkStyle = {
+    _hover: {
+      color: "#004830",
+    },
+    _activeLink: { color: "#004830" },
+  };
+
+  const iconStyle = {
+    boxSize: 7,
+    _hover: { color: "#F2F3F5" },
+  };
   return (
     <Flex
       flexDir="column"
@@ -56,46 +68,26 @@ export default function Sidebar() {
       >
         {isSmallScreen && (
           <>
-            <Link
-              as={RouterNavLink}
-              to="/"
-              _hover={{ color: "#004830" }}
-              _activeLink={{ color: "#004830" }}
-            >
+            <Link as={RouterNavLink} to="/" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={FaUser} />
                 About Me
               </Flex>
             </Link>
 
-            <Link
-              as={RouterNavLink}
-              to="/portfolio"
-              _hover={{ color: "#004830" }}
-              _activeLink={{ color: "#004830" }}
-            >
+            <Link as={RouterNavLink} to="/portfolio" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={FaLaptopCode} />
                 Portfolio
               </Flex>
             </Link>
-            <Link
-              as={RouterNavLink}
-              to="/resume"
-              _hover={{ color: "#004830" }}
-              _activeLink={{ color: "#004830" }}
-            >
+            <Link as={RouterNavLink} to="/resume" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={IoDocumentText} />
                 Resume
               </Flex>
             </Link>
-            <Link
-              as={RouterNavLink}
-              to="/contact"
-              _hover={{ color: "#004830" }}
-              _activeLink={{ color: "#004830" }}
-            >
+            <Link as={RouterNavLink} to="/contact" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={IoMail} />
                 Contact
@@ -131,7 +123,7 @@ export default function Sidebar() {
                     to="https://www.linkedin.com/in/dario-varga/"
                     target="_blank"
                   >
-                    <Icon as={FaLinkedin} boxSize={7} />
+                    <Icon as={FaLinkedin} sx={{ ...iconStyle }} />
                   </Link>
 
                   <Link
@@ -139,21 +131,21 @@ export default function Sidebar() {
                     to="https://github.com/dariovargaos"
                     target="_blank"
                   >
-                    <Icon as={FaGithub} boxSize={7} />
+                    <Icon as={FaGithub} sx={{ ...iconStyle }} />
                   </Link>
                   <Link
                     as={RouterNavLink}
                     to="https://www.facebook.com/dario.varga.1/"
                     target="_blank"
                   >
-                    <Icon as={FaFacebook} boxSize={7} />
+                    <Icon as={FaFacebook} sx={{ ...iconStyle }} />
                   </Link>
                   <Link
                     as={RouterNavLink}
                     to="https://www.instagram.com/dario.varga/"
                     target="_blank"
                   >
-                    <Icon as={FaInstagram} boxSize={7} />
+                    <Icon as={FaInstagram} sx={{ ...iconStyle }} />
                   </Link>
                 </HStack>
               </Flex>
@@ -179,7 +171,7 @@ export default function Sidebar() {
               to="https://www.linkedin.com/in/dario-varga/"
               target="_blank"
             >
-              <Icon as={BsLinkedin} boxSize={7} />
+              <Icon as={BsLinkedin} sx={{ ...iconStyle }} />
             </Link>
 
             <Link
@@ -187,64 +179,44 @@ export default function Sidebar() {
               to="https://github.com/dariovargaos"
               target="_blank"
             >
-              <Icon as={FaGithub} boxSize={7} />
+              <Icon as={FaGithub} sx={{ ...iconStyle }} />
             </Link>
             <Link
               as={RouterNavLink}
               to="https://www.facebook.com/dario.varga.1/"
               target="_blank"
             >
-              <Icon as={FaFacebook} boxSize={7} />
+              <Icon as={FaFacebook} sx={{ ...iconStyle }} />
             </Link>
             <Link
               as={RouterNavLink}
               to="https://www.instagram.com/dario.varga/"
               target="_blank"
             >
-              <Icon as={FaInstagram} boxSize={7} />
+              <Icon as={FaInstagram} sx={{ ...iconStyle }} />
             </Link>
           </HStack>
 
-          <Link
-            as={RouterNavLink}
-            to="/"
-            _hover={{ color: "#004830" }}
-            _activeLink={{ color: "#004830" }}
-          >
+          <Link as={RouterNavLink} to="/" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={FaUser} mr={2} />
               About Me
             </Flex>
           </Link>
 
-          <Link
-            as={RouterNavLink}
-            to="/portfolio"
-            _hover={{ color: "#004830" }}
-            _activeLink={{ color: "#004830" }}
-          >
+          <Link as={RouterNavLink} to="/portfolio" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={FaLaptopCode} mr={2} />
               Portfolio
             </Flex>
           </Link>
-          <Link
-            as={RouterNavLink}
-            to="/resume"
-            _hover={{ color: "#004830" }}
-            _activeLink={{ color: "#004830" }}
-          >
+          <Link as={RouterNavLink} to="/resume" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={IoDocumentText} mr={2} />
               Resume
             </Flex>
           </Link>
-          <Link
-            as={RouterNavLink}
-            to="/contact"
-            _hover={{ color: "#004830" }}
-            _activeLink={{ color: "#004830" }}
-          >
+          <Link as={RouterNavLink} to="/contact" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={IoMail} mr={2} />
               Contact
