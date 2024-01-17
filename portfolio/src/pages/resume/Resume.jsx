@@ -1,4 +1,5 @@
-import { useStorage } from "../../hooks/useStorage";
+import { useLanguage } from "../../hooks/useLanguage";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -12,7 +13,8 @@ import {
 import { FaFilePdf } from "react-icons/fa6";
 
 export default function AboutMe() {
-  // const { data, isLoading, error } = useStorage();
+  const { t } = useTranslation("global");
+  const { language } = useLanguage();
 
   const isSmallScreen = useBreakpointValue({
     base: true,
@@ -29,7 +31,7 @@ export default function AboutMe() {
         minH="200px"
       >
         <Heading color="black" fontWeight="bold">
-          Online Resume
+          {t("resume.title")}
         </Heading>
         <Button
           leftIcon={<FaFilePdf />}
@@ -38,7 +40,7 @@ export default function AboutMe() {
           download="Varga_Dario_CV"
           target="blank"
         >
-          Download PDF Version
+          {t("resume.button")}
         </Button>
       </Flex>
 
@@ -46,7 +48,11 @@ export default function AboutMe() {
         <Flex boxShadow="md" justify="center">
           <Image
             w={isSmallScreen ? "100%" : "70%"}
-            src="https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/Professional%20CV%20Resume%20image.png?alt=media&token=5e804952-eb5e-46a5-b9b7-20f7a08ea8d2"
+            src={
+              language === "en"
+                ? "https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/Professional%20CV%20Resume%20image.png?alt=media&token=5e804952-eb5e-46a5-b9b7-20f7a08ea8d2"
+                : "https://firebasestorage.googleapis.com/v0/b/portfolio-ad943.appspot.com/o/Professional%20CV%20Resume%20Croatian%20image.png?alt=media&token=6481d6c0-822a-4823-97e7-cfbbe7c1a42e"
+            }
           />
         </Flex>
       </Flex>

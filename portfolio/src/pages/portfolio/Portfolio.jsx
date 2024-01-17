@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -21,6 +22,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 export default function AboutMe() {
   const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
+  const { t } = useTranslation("global");
 
   const isSmallScreen = useBreakpointValue({
     base: true,
@@ -37,23 +39,14 @@ export default function AboutMe() {
         minH="200px"
         p={isSmallScreen ? 3 : 0}
       >
-        <Heading fontWeight="bold">Portfolio</Heading>
-        <Text>
-          Welcome to my online portfolio. These are my personal projects which
-          you can check out live or see the code on my github.
-        </Text>
-        <Button
-          onClick={() => navigate("/contact")}
-          leftIcon={<FaLocationArrow />}
-        >
-          Hire me
-        </Button>
+        <Heading fontWeight="bold">{t("portfolio.title")}</Heading>
+        <Text>{t("portfolio.description")}</Text>
       </Flex>
 
       <Flex flexDir="column" p={8} gap={4}>
         <Flex gap={5}>
           <Box borderLeft="5px solid #54B689"></Box>
-          <Heading size="lg">My Projects</Heading>
+          <Heading size="lg">{t("portfolio.subtitle")}</Heading>
         </Flex>
 
         <SimpleGrid minChildWidth="300px" spacing="40px">

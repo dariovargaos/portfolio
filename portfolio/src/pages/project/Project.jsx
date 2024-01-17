@@ -1,5 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useDocument } from "../../hooks/useDocument";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../hooks/useLanguage";
 import {
   Box,
   Button,
@@ -24,6 +26,10 @@ export default function Project() {
     error,
   } = useDocument("projects", projectId);
 
+  const { t } = useTranslation("global");
+
+  const { language } = useLanguage();
+
   const navigate = useNavigate();
 
   const isSmallScreen = useBreakpointValue({
@@ -46,7 +52,7 @@ export default function Project() {
           onClick={() => navigate("/portfolio")}
           leftIcon={<FaArrowAltCircleLeft />}
         >
-          Portfolio
+          {t("portfolio.title")}
         </Button>
       </Box>
       <Box>
@@ -63,20 +69,25 @@ export default function Project() {
           <Flex flexDir="column" gap={5}>
             <Heading size="lg">{project?.name}</Heading>
             <Text>
-              Live demo:{" "}
+              {t("project.demo")}:{" "}
               <Link href={project?.website} isExternal color="#38A169">
                 {project?.website}
               </Link>
             </Text>
             <Text>
-              Github repo:{" "}
+              {t("project.github")}:{" "}
               <Link href={project?.github} isExternal color="#38A169">
                 {project?.github}
               </Link>
             </Text>
-            <Text>Description: {project?.description}</Text>
-            <Text>Technologies used:</Text>
-            <UnorderedList p={3}>
+            <Text>
+              {t("project.description")}:{" "}
+              {language === "en"
+                ? project?.description
+                : project?.description_cro}
+            </Text>
+            <Text>{t("project.technologies")}:</Text>
+            <UnorderedList p={2}>
               {project?.technologies.map((technology, index) => (
                 <ListItem key={index}>{technology}</ListItem>
               ))}

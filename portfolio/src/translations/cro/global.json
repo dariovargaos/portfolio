@@ -15,6 +15,42 @@
       "portfolio": "Portfelj",
       "resume": "Biografski podaci"
     },
-    "whatIDo": "Završio sam stručni studij informatike na FERIT-u u Osijeku te sam također završio edukaciju u trajanju od 1 godine za Frontend developera na Visokom učilištu Algebra. Trenutno tražim posao gdje mogu naučiti i usavršavati se u frontend developmentu. U nastavku su ukratko prikazane moje tehničke vještine i tehnologije koje koristim. Želite li više saznati o mom iskustvu? Pogledajte moj online životopis i portfelj projekata."
+    "whatIDo": {
+      "title": "Što radim",
+      "description": "Završio sam stručni studij informatike na FERIT-u u Osijeku te sam također završio edukaciju u trajanju od 1 godine za Frontend developera na Visokom učilištu Algebra. Trenutno tražim posao gdje mogu naučiti i usavršavati se u frontend developmentu. U nastavku su ukratko prikazane moje tehničke vještine i tehnologije koje koristim. Želite li više saznati o mom iskustvu? Pogledajte moj online životopis i portfelj projekata."
+    },
+    "featured": "Istaknuti projekti"
+  },
+
+  "portfolio": {
+    "title": "Portfelj",
+    "description": "Dobrodošli na moj online portfelj. Ovdje su prikazani moji osobni projekti kojima možete vidjeti demo uživo ili provjeriti kod na mom github profilu.",
+    "subtitle": "Moji projekti"
+  },
+
+  "resume": {
+    "title": "Online životopis",
+    "button": "Preuzmi PDF verziju"
+  },
+
+  "contact": {
+    "title": "Kontakt",
+    "text1": "Zanima li vas da me zaposlite ili me samo želite pozdraviti? Možete ispuniti kontakt formu u nastavku ili poslati mi email na",
+    "text2": "Želite se povezati? Možete me zapratiti na društvenim mrežama ispod.",
+    "form_title": "Javite mi se",
+    "form_name": "Ime",
+    "form_email": "Email",
+    "form_message": "Unesite svoju poruku",
+    "form_button": "Pošalji",
+    "form_name_error": "Potrebno je unijeti ime.",
+    "form_email_error": "Potreban je unijeti email.",
+    "form_message_error": "Potrebno je unijeti poruku."
+  },
+
+  "project": {
+    "demo": "Demo uživo",
+    "github": "Github repozitorij",
+    "description": "Opis",
+    "technologies": "Korištene tehnologije"
   }
 }

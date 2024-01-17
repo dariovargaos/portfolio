@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { NavLink as RouterNavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -26,6 +27,8 @@ export default function Contact() {
     reset,
     formState: { errors },
   } = useForm();
+
+  const { t } = useTranslation("global");
 
   const toast = useToast();
 
@@ -87,18 +90,15 @@ export default function Contact() {
         p={isSmallScreen ? 3 : 0}
       >
         <Heading color="black" fontWeight="bold">
-          Contact
+          {t("contact.title")}
         </Heading>
         <Text textAlign={isSmallScreen ? "center" : ""}>
-          Interested in hiring me or just want to say hi? You can fill in the
-          contact form below or send me an email to{" "}
+          {t("contact.text1")}{" "}
           <Link color="#38A169" href="mailto:dario.varga2012@gmail.com">
             dario.varga2012@gmail.com
           </Link>
         </Text>
-        <Text>
-          Want to get connected? Follow me on the social channels below.
-        </Text>
+        <Text>{t("contact.text2")}</Text>
         <Flex gap={5}>
           <Link
             as={RouterNavLink}
@@ -153,7 +153,7 @@ export default function Contact() {
       </Flex>
 
       <Flex flexDir="column" p={8} gap={5}>
-        <Heading alignSelf="center">Get in Touch</Heading>
+        <Heading alignSelf="center">{t("contact.form_title")}</Heading>
 
         <form
           onSubmit={handleSubmit(onSubmit)}
@@ -171,8 +171,13 @@ export default function Contact() {
           >
             <FormControl justifySelf="center">
               <Input
-                {...register("name", { required: "Name is required." })}
-                placeholder="Name"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: t("contact.form_name_error"),
+                  },
+                })}
+                placeholder={t("contact.form_name")}
                 type="text"
               />
               {errors.name && <Text color="red">{errors.name.message}</Text>}
@@ -180,7 +185,10 @@ export default function Contact() {
             <FormControl>
               <Input
                 {...register("email", {
-                  required: "Email is required.",
+                  required: {
+                    value: true,
+                    message: t("contact.form_email_error"),
+                  },
                   pattern: {
                     value: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/,
                     message: "Invalid email address",
@@ -201,9 +209,12 @@ export default function Contact() {
             <FormControl>
               <Textarea
                 {...register("message", {
-                  required: "Message is required.",
+                  required: {
+                    value: true,
+                    message: t("contact.form_message_error"),
+                  },
                 })}
-                placeholder="Enter your Message"
+                placeholder={t("contact.form_message")}
                 type="text"
                 rows="10"
               />
@@ -212,7 +223,7 @@ export default function Contact() {
               )}
             </FormControl>
             <Button type="submit" alignSelf="flex-start">
-              Send Now
+              {t("contact.form_button")}
             </Button>
           </Flex>
         </form>

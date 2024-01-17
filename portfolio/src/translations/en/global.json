@@ -15,6 +15,42 @@
       "portfolio": "View Portfolio",
       "resume": "View Resume"
     },
-    "whatIDo": "I'm bachelor graduate at FERIT Osijek and I also finished 1 year education for Frontend development at University of Algebra. Currently looking for job so I can learn and grow in the frontend field. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my online resume and project portfolio."
+    "whatIDo": {
+      "title": "What I do",
+      "description": "I'm bachelor graduate at FERIT Osijek and I also finished 1 year education for Frontend development at University of Algebra. Currently looking for job so I can learn and grow in the frontend field. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my online resume and project portfolio."
+    },
+    "featured": "Featured Projects"
+  },
+
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Welcome to my online portfolio. These are my personal projects which you can check out live or see the code on my github.",
+    "subtitle": "My Projects"
+  },
+
+  "resume": {
+    "title": "Online Resume",
+    "button": "Download PDF Version"
+  },
+
+  "contact": {
+    "title": "Contact",
+    "text1": "Interested in hiring me or just want to say hi? You can fill in the contact form below or send me an email to",
+    "text2": "Want to get connected? Follow me on the social channels below.",
+    "form_title": "Get in Touch",
+    "form_name": "Name",
+    "form_email": "Email",
+    "form_message": "Enter your Message",
+    "form_button": "Send Now",
+    "form_name_error": "Name is required.",
+    "form_email_error": "Email is required.",
+    "form_message_error": "Message is required."
+  },
+
+  "project": {
+    "demo": "Live demo",
+    "github": "Github repo",
+    "description": "Description",
+    "technologies": "Technologies used"
   }
 }

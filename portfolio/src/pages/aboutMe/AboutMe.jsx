@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
+import { useTranslation } from "react-i18next";
 import {
   Box,
   Button,
@@ -34,6 +35,7 @@ import { SiMantine } from "react-icons/si";
 export default function AboutMe() {
   const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
+  const { t } = useTranslation("global");
 
   const featuredProjects = projects?.filter(
     (project) => project.featured === true
@@ -53,16 +55,13 @@ export default function AboutMe() {
           <Text fontSize="lg" color="gray.500">
             Junior Frontend Developer
           </Text>
-          <Text>
-            I&apos;m a frontend developer specialised in React. I built several
-            web apps which you can check out on my Github or portfolio.
-          </Text>
+          <Text>{t("aboutMe.aboutMe")}</Text>
           <ButtonGroup>
             <Button
               leftIcon={<FaArrowAltCircleRight />}
               onClick={() => navigate("/portfolio")}
             >
-              View Portfolio
+              {t("aboutMe.buttons.portfolio")}
             </Button>
             <Button
               leftIcon={<IoDocumentText />}
@@ -70,7 +69,7 @@ export default function AboutMe() {
               bg="#4F4F4F"
               _hover={{ bg: "#373737" }}
             >
-              View Resume
+              {t("aboutMe.buttons.resume")}
             </Button>
           </ButtonGroup>
         </Flex>
@@ -88,16 +87,9 @@ export default function AboutMe() {
       <Flex flexDir="column" p={8} gap={4}>
         <Flex gap={5}>
           <Box borderLeft="5px solid #54B689"></Box>
-          <Heading size="lg">What I do</Heading>
+          <Heading size="lg">{t("aboutMe.whatIDo.title")}</Heading>
         </Flex>
-        <Text>
-          I&apos;m bachelor graduate at FERIT Osijek and I also finished 1 year
-          education for Frontend development at University of Algebra. Currently
-          looking for job so I can learn and grow in the frontend field. Below
-          is a quick overview of my main technical skill sets and technologies I
-          use. Want to find out more about my experience? Check out my online
-          resume and project portfolio.
-        </Text>
+        <Text>{t("aboutMe.whatIDo.description")}</Text>
         <Flex
           justify={isSmallScreen ? "" : "space-evenly"}
           flexWrap={isSmallScreen ? "wrap" : ""}
@@ -155,7 +147,7 @@ export default function AboutMe() {
       <Flex flexDir="column" p={8} gap={5}>
         <Flex gap={5}>
           <Box borderLeft="5px solid #54B689"></Box>
-          <Heading size="lg">Featured Projects</Heading>
+          <Heading size="lg">{t("aboutMe.featured")}</Heading>
         </Flex>
         <SimpleGrid
           minChildWidth={isSmallScreen ? "250px" : "150px"}
@@ -189,7 +181,7 @@ export default function AboutMe() {
             leftIcon={<FaArrowAltCircleRight />}
             onClick={() => navigate("/portfolio")}
           >
-            View Portfolio
+            {t("aboutMe.buttons.portfolio")}
           </Button>
         </Flex>
       </Flex>

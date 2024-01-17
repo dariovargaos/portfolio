@@ -16,6 +16,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Button,
+  Divider,
 } from "@chakra-ui/react";
 
 //icons
@@ -33,7 +34,7 @@ import { BsLinkedin } from "react-icons/bs";
 
 export default function Sidebar() {
   const { t } = useTranslation("global");
-  const { changeLanguage } = useLanguage();
+  const { language, changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -45,6 +46,7 @@ export default function Sidebar() {
     lg: false,
   });
 
+  //custom component styles
   const linkStyle = {
     _hover: {
       color: "#004830",
@@ -55,6 +57,14 @@ export default function Sidebar() {
   const iconStyle = {
     boxSize: 7,
     _hover: { color: "#F2F3F5" },
+  };
+
+  const translateButtonsStyle = {
+    size: "sm",
+    color: "white",
+    _hover: {
+      bg: "#2E8B57",
+    },
   };
   return (
     <Flex
@@ -105,8 +115,28 @@ export default function Sidebar() {
         )}
         {!isSmallScreen && (
           <Flex flexDir="column" align="center" gap={3}>
-            <Button onClick={() => changeLanguage("en")}>EN</Button>
-            <Button onClick={() => changeLanguage("cro")}>CRO</Button>
+            <Flex gap={3}>
+              <Button
+                onClick={() => changeLanguage("en")}
+                sx={{
+                  ...translateButtonsStyle,
+                  fontWeight: language === "en" ? "bold" : "400",
+                }}
+              >
+                EN
+              </Button>
+              <Divider orientation="vertical" />
+              <Button
+                onClick={() => changeLanguage("cro")}
+                sx={{
+                  ...translateButtonsStyle,
+                  fontWeight: language === "cro" ? "bold" : "400",
+                }}
+              >
+                HRV
+              </Button>
+            </Flex>
+
             <Heading size="lg">Dario Varga</Heading>
           </Flex>
         )}
@@ -155,6 +185,28 @@ export default function Sidebar() {
                     <Icon as={FaInstagram} sx={{ ...iconStyle }} />
                   </Link>
                 </HStack>
+                <Flex gap={3}>
+                  <Button
+                    onClick={() => changeLanguage("en")}
+                    variant="outline"
+                    sx={{
+                      ...translateButtonsStyle,
+                      fontWeight: language === "en" ? "bold" : "400",
+                    }}
+                  >
+                    EN
+                  </Button>
+                  <Divider orientation="vertical" />
+                  <Button
+                    onClick={() => changeLanguage("cro")}
+                    sx={{
+                      ...translateButtonsStyle,
+                      fontWeight: language === "cro" ? "bold" : "400",
+                    }}
+                  >
+                    HRV
+                  </Button>
+                </Flex>
               </Flex>
             </DrawerBody>
           </DrawerContent>
