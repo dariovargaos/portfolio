@@ -1,0 +1,20 @@
+{
+  "sidebar": {
+    "aboutMe": "Bok, ja sam Dario Varga junior frontend developer. Dobro došli na moju web stranicu!",
+    "pages": {
+      "aboutMe": "O meni",
+      "portfolio": "Portfelj",
+      "resume": "Biografski podaci",
+      "contact": "Kontakt"
+    }
+  },
+
+  "aboutMe": {
+    "aboutMe": "Ja sam frontend developer specijaliziran za React. Izradio sam nekoliko web aplikacija koje možete pronaći na mom Github profilu ili u portfelju.",
+    "buttons": {
+      "portfolio": "Portfelj",
+      "resume": "Biografski podaci"
+    },
+    "whatIDo": "Završio sam stručni studij informatike na FERIT-u u Osijeku te sam također završio edukaciju u trajanju od 1 godine za Frontend developera na Visokom učilištu Algebra. Trenutno tražim posao gdje mogu naučiti i usavršavati se u frontend developmentu. U nastavku su ukratko prikazane moje tehničke vještine i tehnologije koje koristim. Želite li više saznati o mom iskustvu? Pogledajte moj online životopis i portfelj projekata."
+  }
+}

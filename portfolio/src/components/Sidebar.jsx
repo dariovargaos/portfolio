@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { useLanguage } from "../hooks/useLanguage";
 import {
   Flex,
   HStack,
@@ -30,6 +32,8 @@ import { ArrowLeftIcon } from "@chakra-ui/icons";
 import { BsLinkedin } from "react-icons/bs";
 
 export default function Sidebar() {
+  const { t } = useTranslation("global");
+  const { changeLanguage } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -99,7 +103,13 @@ export default function Sidebar() {
             </Button>
           </>
         )}
-        {!isSmallScreen && <Heading size="lg">Dario Varga</Heading>}
+        {!isSmallScreen && (
+          <Flex flexDir="column" align="center" gap={3}>
+            <Button onClick={() => changeLanguage("en")}>EN</Button>
+            <Button onClick={() => changeLanguage("cro")}>CRO</Button>
+            <Heading size="lg">Dario Varga</Heading>
+          </Flex>
+        )}
       </Flex>
       {isSmallScreen && (
         <Drawer isOpen={isOpen} placement="right" onClose={toggleDrawer}>
@@ -113,10 +123,7 @@ export default function Sidebar() {
                   src="https://bit.ly/dan-abramov"
                   alt="Dan Abramov"
                 />
-                <Text>
-                  Hi, my name is Dario Varga and I&apos;m a junior frontend
-                  developer. Welcome to my personal website!
-                </Text>
+                <Text>{t("sidebar.aboutMe")}</Text>
                 <HStack spacing={4}>
                   <Link
                     as={RouterNavLink}
@@ -161,10 +168,7 @@ export default function Sidebar() {
             src="https://bit.ly/dan-abramov"
             alt="Dan Abramov"
           />
-          <Text>
-            Hi, my name is Dario Varga and I&apos;m a junior frontend developer.
-            Welcome to my personal website!
-          </Text>
+          <Text>{t("sidebar.aboutMe")}</Text>
           <HStack spacing={4}>
             <Link
               as={RouterNavLink}
@@ -200,26 +204,26 @@ export default function Sidebar() {
           <Link as={RouterNavLink} to="/" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={FaUser} mr={2} />
-              About Me
+              {t("sidebar.pages.aboutMe")}
             </Flex>
           </Link>
 
           <Link as={RouterNavLink} to="/portfolio" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={FaLaptopCode} mr={2} />
-              Portfolio
+              {t("sidebar.pages.portfolio")}
             </Flex>
           </Link>
           <Link as={RouterNavLink} to="/resume" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={IoDocumentText} mr={2} />
-              Resume
+              {t("sidebar.pages.resume")}
             </Flex>
           </Link>
           <Link as={RouterNavLink} to="/contact" sx={{ ...linkStyle }}>
             <Flex align="center">
               <Icon as={IoMail} mr={2} />
-              Contact
+              {t("sidebar.pages.contact")}
             </Flex>
           </Link>
         </>

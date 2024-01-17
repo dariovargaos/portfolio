@@ -1,0 +1,20 @@
+{
+  "sidebar": {
+    "aboutMe": "Hi, my name is Dario Varga and I'm a junior frontend developer. Welcome to my personal website!",
+    "pages": {
+      "aboutMe": "About Me",
+      "portfolio": "Portfolio",
+      "resume": "Resume",
+      "contact": "Contact"
+    }
+  },
+
+  "aboutMe": {
+    "aboutMe": "I'm a frontend developer specialised in React. I built several web apps which you can check out on my Github or portfolio.",
+    "buttons": {
+      "portfolio": "View Portfolio",
+      "resume": "View Resume"
+    },
+    "whatIDo": "I'm bachelor graduate at FERIT Osijek and I also finished 1 year education for Frontend development at University of Algebra. Currently looking for job so I can learn and grow in the frontend field. Below is a quick overview of my main technical skill sets and technologies I use. Want to find out more about my experience? Check out my online resume and project portfolio."
+  }
+}
