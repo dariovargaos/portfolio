@@ -85,26 +85,26 @@ export default function Sidebar() {
             <Link as={RouterNavLink} to="/" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={FaUser} />
-                About Me
+                {t("sidebar.pages.aboutMe")}
               </Flex>
             </Link>
 
             <Link as={RouterNavLink} to="/portfolio" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={FaLaptopCode} />
-                Portfolio
+                {t("sidebar.pages.portfolio")}
               </Flex>
             </Link>
             <Link as={RouterNavLink} to="/resume" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={IoDocumentText} />
-                Resume
+                {t("sidebar.pages.resume")}
               </Flex>
             </Link>
             <Link as={RouterNavLink} to="/contact" sx={{ ...linkStyle }}>
               <Flex flexDir="column" align="center">
                 <Icon as={IoMail} />
-                Contact
+                {t("sidebar.pages.contact")}
               </Flex>
             </Link>
 
@@ -123,7 +123,7 @@ export default function Sidebar() {
                   fontWeight: language === "en" ? "bold" : "400",
                 }}
               >
-                EN
+                ENG
               </Button>
               <Divider orientation="vertical" />
               <Button
@@ -188,13 +188,12 @@ export default function Sidebar() {
                 <Flex gap={3}>
                   <Button
                     onClick={() => changeLanguage("en")}
-                    variant="outline"
                     sx={{
                       ...translateButtonsStyle,
                       fontWeight: language === "en" ? "bold" : "400",
                     }}
                   >
-                    EN
+                    ENG
                   </Button>
                   <Divider orientation="vertical" />
                   <Button

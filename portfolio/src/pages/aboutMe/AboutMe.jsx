@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../hooks/useLanguage";
 import {
   Box,
   Button,
@@ -36,6 +37,7 @@ export default function AboutMe() {
   const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
   const { t } = useTranslation("global");
+  const { language } = useLanguage();
 
   const featuredProjects = projects?.filter(
     (project) => project.featured === true
@@ -170,7 +172,12 @@ export default function AboutMe() {
                 <CardBody>
                   <Heading size="md">{project.name}</Heading>
 
-                  <Text py="2">{project.description.substring(0, 100)}...</Text>
+                  <Text py={2}>
+                    {language === "en"
+                      ? project.description.substring(0, 100)
+                      : project.description_cro.substring(0, 100)}
+                    ...
+                  </Text>
                 </CardBody>
               </Stack>
             </Card>

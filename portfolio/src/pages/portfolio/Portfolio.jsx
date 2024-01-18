@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useFirestore } from "../../hooks/useFirestore";
 import { useTranslation } from "react-i18next";
+import { useLanguage } from "../../hooks/useLanguage";
 import {
   Box,
-  Button,
   Card,
   CardBody,
   Flex,
@@ -16,13 +16,11 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 
-//icons
-import { FaLocationArrow } from "react-icons/fa6";
-
 export default function AboutMe() {
   const { data: projects, isLoading, error } = useFirestore();
   const navigate = useNavigate();
   const { t } = useTranslation("global");
+  const { language } = useLanguage();
 
   const isSmallScreen = useBreakpointValue({
     base: true,
@@ -68,8 +66,11 @@ export default function AboutMe() {
                   <CardBody>
                     <Heading size="md">{project.name}</Heading>
 
-                    <Text py="2">
-                      {project.description.substring(0, 100)}...
+                    <Text py={2}>
+                      {language === "en"
+                        ? project.description.substring(0, 100)
+                        : project.description_cro.substring(0, 100)}
+                      ...
                     </Text>
                   </CardBody>
                 </Stack>
