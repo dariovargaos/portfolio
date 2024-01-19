@@ -14,6 +14,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  useColorMode,
 } from "@chakra-ui/react";
 
 export default function AboutMe() {
@@ -21,6 +22,7 @@ export default function AboutMe() {
   const navigate = useNavigate();
   const { t } = useTranslation("global");
   const { language } = useLanguage();
+  const { colorMode } = useColorMode();
 
   const isSmallScreen = useBreakpointValue({
     base: true,
@@ -33,9 +35,10 @@ export default function AboutMe() {
         justify="center"
         align="center"
         gap={5}
-        bg="#FAFAFA"
+        bg={colorMode === "dark" ? "#1A202C" : "#FAFAFA"}
         minH="200px"
         p={isSmallScreen ? 3 : 0}
+        borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
       >
         <Heading fontWeight="bold">{t("portfolio.title")}</Heading>
         <Text>{t("portfolio.description")}</Text>

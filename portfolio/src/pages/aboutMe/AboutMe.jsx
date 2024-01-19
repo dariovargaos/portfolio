@@ -18,6 +18,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  useColorMode,
 } from "@chakra-ui/react";
 
 //icons
@@ -38,6 +39,7 @@ export default function AboutMe() {
   const navigate = useNavigate();
   const { t } = useTranslation("global");
   const { language } = useLanguage();
+  const { colorMode } = useColorMode();
 
   const featuredProjects = projects?.filter(
     (project) => project.featured === true
@@ -49,11 +51,16 @@ export default function AboutMe() {
   });
   return (
     <Box>
-      <Flex align="center" gap={5} bg="#FAFAFA" minH="300px" p={8}>
+      <Flex
+        align="center"
+        gap={5}
+        bg={colorMode === "dark" ? "#1A202C" : "#FAFAFA"}
+        minH="300px"
+        p={8}
+        borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
+      >
         <Flex flexDir="column" gap={3}>
-          <Heading color="black" fontWeight="bold">
-            Dario Varga
-          </Heading>
+          <Heading fontWeight="bold">Dario Varga</Heading>
           <Text fontSize="lg" color="gray.500">
             Junior Frontend Developer
           </Text>

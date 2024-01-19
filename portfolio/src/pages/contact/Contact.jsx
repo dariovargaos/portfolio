@@ -15,6 +15,7 @@ import {
   Textarea,
   useBreakpointValue,
   useToast,
+  useColorMode,
 } from "@chakra-ui/react";
 
 //icons
@@ -29,6 +30,8 @@ export default function Contact() {
   } = useForm();
 
   const { t } = useTranslation("global");
+
+  const { colorMode } = useColorMode();
 
   const toast = useToast();
 
@@ -59,8 +62,8 @@ export default function Contact() {
         console.log("Email sent successfully: ", response);
         reset();
         toast({
-          title: "Message is sent.",
-          description: "Thank you for reaching out!",
+          title: t("contact.toast_success_title"),
+          description: t("contact.toast_success_description"),
           status: "success",
           duration: 5000,
           isClosable: true,
@@ -69,8 +72,8 @@ export default function Contact() {
       .catch((error) => {
         console.error("Error sending email: ", error);
         toast({
-          title: "Something went wrong.",
-          description: "Please try again!",
+          title: t("contact.toast_error_title"),
+          description: t("contact.toast_error_description"),
           status: "error",
           duration: 5000,
           isClosable: true,
@@ -85,13 +88,12 @@ export default function Contact() {
         justify="center"
         align="center"
         gap={5}
-        bg="#FAFAFA"
+        bg={colorMode === "dark" ? "#1A202C" : "#FAFAFA"}
         minH="200px"
         p={isSmallScreen ? 3 : 0}
+        borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
       >
-        <Heading color="black" fontWeight="bold">
-          {t("contact.title")}
-        </Heading>
+        <Heading fontWeight="bold">{t("contact.title")}</Heading>
         <Text textAlign={isSmallScreen ? "center" : ""}>
           {t("contact.text1")}{" "}
           <Link color="#38A169" href="mailto:dario.varga2012@gmail.com">

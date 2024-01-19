@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, ColorModeScript } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
@@ -24,6 +25,18 @@ i18next.init({
   },
 });
 
+const config = {
+  initialColorMode: "light",
+  useSystemColorMode: false,
+};
+
+const colors = {
+  backgroundColor: {
+    light: "none",
+    dark: "none",
+  },
+};
+
 const customTheme = extendTheme({
   components: {
     Button: {
@@ -42,6 +55,8 @@ const customTheme = extendTheme({
       },
     },
   },
+  config,
+  colors,
 });
 
 const queryClient = new QueryClient();
@@ -52,6 +67,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <QueryClientProvider client={queryClient}>
         <I18nextProvider i18n={i18next}>
           <LanguageProvider>
+            <ColorModeScript
+              initialColorMode={customTheme.config.initialColorMode}
+            />
             <App />
           </LanguageProvider>
         </I18nextProvider>

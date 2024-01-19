@@ -10,13 +10,17 @@ import {
   Image,
   Link,
   Text,
-  useBreakpointValue,
   Drawer,
   DrawerBody,
   DrawerContent,
   DrawerCloseButton,
   Button,
   Divider,
+  Switch,
+  VStack,
+  useBreakpointValue,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 
 //icons
@@ -29,12 +33,13 @@ import {
   FaLaptopCode,
 } from "react-icons/fa";
 import { IoDocumentText, IoMail } from "react-icons/io5";
-import { ArrowLeftIcon } from "@chakra-ui/icons";
+import { ArrowLeftIcon, SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { BsLinkedin } from "react-icons/bs";
 
 export default function Sidebar() {
   const { t } = useTranslation("global");
   const { language, changeLanguage } = useLanguage();
+  const { colorMode, toggleColorMode } = useColorMode();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -47,11 +52,33 @@ export default function Sidebar() {
   });
 
   //custom component styles
+  const sidebarBg = useColorModeValue("green.500", "#1E2A3A");
+
+  const hoverBgLightBtn = "#2E8B57";
+  const hoverBgDarkBtn = "#1A202C";
+  const hoverBg = useColorModeValue(hoverBgLightBtn, hoverBgDarkBtn);
+
+  const navlinkColors = {
+    hoverLight: "#004830",
+    hoverDark: "#38A169",
+    activeLight: "#004830",
+    activeDark: "#38A169",
+  };
+  const navlinkHover = useColorModeValue(
+    navlinkColors.hoverLight,
+    navlinkColors.hoverDark
+  );
+  const navlinkActive = useColorModeValue(
+    navlinkColors.activeLight,
+    navlinkColors.activeDark
+  );
+
   const linkStyle = {
     _hover: {
-      color: "#004830",
+      color: navlinkHover,
     },
-    _activeLink: { color: "#004830" },
+    _activeLink: { color: navlinkActive },
+    color: "#DDF0E7",
   };
 
   const iconStyle = {
@@ -59,19 +86,12 @@ export default function Sidebar() {
     _hover: { color: "#F2F3F5" },
   };
 
-  const translateButtonsStyle = {
-    size: "sm",
-    color: "white",
-    _hover: {
-      bg: "#2E8B57",
-    },
-  };
   return (
     <Flex
       flexDir="column"
       align={isSmallScreen ? "" : "center"}
       justify="space-evenly"
-      bg="green.500"
+      bg={sidebarBg}
       color="white"
       p={3}
       minH={isSmallScreen ? "" : "100vh"}
@@ -108,7 +128,16 @@ export default function Sidebar() {
               </Flex>
             </Link>
 
-            <Button onClick={() => setIsOpen(true)} size="sm">
+            <Button
+              onClick={() => setIsOpen(true)}
+              size="sm"
+              bg={
+                colorMode === "dark"
+                  ? "backgroundColor.light"
+                  : "backgroundColor.dark"
+              }
+              _hover={{ bg: hoverBg }}
+            >
               <ArrowLeftIcon />
             </Button>
           </>
@@ -118,20 +147,26 @@ export default function Sidebar() {
             <Flex gap={3}>
               <Button
                 onClick={() => changeLanguage("en")}
-                sx={{
-                  ...translateButtonsStyle,
-                  fontWeight: language === "en" ? "bold" : "400",
-                }}
+                fontWeight={language === "en" ? "bold" : "400"}
+                bg={
+                  colorMode === "dark"
+                    ? "backgroundColor.light"
+                    : "backgroundColor.dark"
+                }
+                _hover={{ bg: hoverBg }}
               >
                 ENG
               </Button>
               <Divider orientation="vertical" />
               <Button
                 onClick={() => changeLanguage("cro")}
-                sx={{
-                  ...translateButtonsStyle,
-                  fontWeight: language === "cro" ? "bold" : "400",
-                }}
+                fontWeight={language === "cro" ? "bold" : "400"}
+                bg={
+                  colorMode === "dark"
+                    ? "backgroundColor.light"
+                    : "backgroundColor.dark"
+                }
+                _hover={{ bg: hoverBg }}
               >
                 HRV
               </Button>
@@ -143,7 +178,7 @@ export default function Sidebar() {
       </Flex>
       {isSmallScreen && (
         <Drawer isOpen={isOpen} placement="right" onClose={toggleDrawer}>
-          <DrawerContent bg="green.500" color="white" p={3}>
+          <DrawerContent bg={sidebarBg} color="white" p={3}>
             <DrawerCloseButton />
             <DrawerBody display="flex" flexDir="column" gap={3}>
               <Flex flexDir="column" align="center" gap={5}>
@@ -188,24 +223,38 @@ export default function Sidebar() {
                 <Flex gap={3}>
                   <Button
                     onClick={() => changeLanguage("en")}
-                    sx={{
-                      ...translateButtonsStyle,
-                      fontWeight: language === "en" ? "bold" : "400",
-                    }}
+                    fontWeight={language === "en" ? "bold" : "400"}
+                    bg={
+                      colorMode === "dark"
+                        ? "backgroundColor.light"
+                        : "backgroundColor.dark"
+                    }
+                    _hover={{ bg: hoverBg }}
                   >
                     ENG
                   </Button>
                   <Divider orientation="vertical" />
                   <Button
                     onClick={() => changeLanguage("cro")}
-                    sx={{
-                      ...translateButtonsStyle,
-                      fontWeight: language === "cro" ? "bold" : "400",
-                    }}
+                    fontWeight={language === "cro" ? "bold" : "400"}
+                    bg={
+                      colorMode === "dark"
+                        ? "backgroundColor.light"
+                        : "backgroundColor.dark"
+                    }
+                    _hover={{ bg: hoverBg }}
                   >
                     HRV
                   </Button>
                 </Flex>
+                <VStack>
+                  <Icon as={colorMode === "light" ? SunIcon : MoonIcon} />
+                  <Switch
+                    isChecked={colorMode === "dark"}
+                    onChange={toggleColorMode}
+                    size="lg"
+                  />
+                </VStack>
               </Flex>
             </DrawerBody>
           </DrawerContent>
@@ -277,6 +326,14 @@ export default function Sidebar() {
               {t("sidebar.pages.contact")}
             </Flex>
           </Link>
+          <VStack>
+            <Icon as={colorMode === "light" ? SunIcon : MoonIcon} />
+            <Switch
+              isChecked={colorMode === "dark"}
+              onChange={toggleColorMode}
+              size="lg"
+            />
+          </VStack>
         </>
       )}
     </Flex>

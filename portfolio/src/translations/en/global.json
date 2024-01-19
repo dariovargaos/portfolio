@@ -10,7 +10,7 @@
   },
 
   "aboutMe": {
-    "aboutMe": "I'm a frontend developer specialised in React. I built several web apps which you can check out on my Github or portfolio.",
+    "aboutMe": "I'm a frontend developer who likes to work in React. I built several web apps which you can check out on my Github or portfolio.",
     "buttons": {
       "portfolio": "View Portfolio",
       "resume": "View Resume"
@@ -30,6 +30,7 @@
 
   "resume": {
     "title": "Online Resume",
+    "subtitle": "Clicking on a button below you will get an insight into the entire CV.",
     "button": "Download PDF Version"
   },
 
@@ -44,7 +45,11 @@
     "form_button": "Send Now",
     "form_name_error": "Name is required.",
     "form_email_error": "Email is required.",
-    "form_message_error": "Message is required."
+    "form_message_error": "Message is required.",
+    "toast_success_title": "Message is sent.",
+    "toast_success_description": "Thank you for reaching out!",
+    "toast_error_title": "Something went wrong.",
+    "toast_error_description": "Please try again!"
   },
 
   "project": {

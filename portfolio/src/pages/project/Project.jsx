@@ -13,6 +13,7 @@ import {
   Text,
   UnorderedList,
   useBreakpointValue,
+  useColorMode,
 } from "@chakra-ui/react";
 
 //icons
@@ -31,6 +32,8 @@ export default function Project() {
   const { language } = useLanguage();
 
   const navigate = useNavigate();
+
+  const { colorMode } = useColorMode();
 
   const isSmallScreen = useBreakpointValue({
     base: true,
@@ -59,10 +62,11 @@ export default function Project() {
         <Flex
           flexDir={isSmallScreen ? "column" : "row"}
           p={4}
-          bg="#FAFAFA"
+          bg={colorMode === "dark" ? "#1E2A3A" : "#FAFAFA"}
           justify="space-evenly"
           align="center"
           gap={5}
+          borderLeft={colorMode === "dark" ? "1px solid gray" : ""}
         >
           <Image src={project?.image} w={isSmallScreen ? "100%" : "40%"} />
 

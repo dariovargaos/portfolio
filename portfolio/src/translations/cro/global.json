@@ -3,39 +3,40 @@
     "aboutMe": "Bok, ja sam Dario Varga junior frontend developer. Dobro došli na moju web stranicu!",
     "pages": {
       "aboutMe": "O meni",
-      "portfolio": "Portfelj",
-      "resume": "Biografski podaci",
+      "portfolio": "Portfolio",
+      "resume": "Životopis",
       "contact": "Kontakt"
     }
   },
 
   "aboutMe": {
-    "aboutMe": "Ja sam frontend developer specijaliziran za React. Izradio sam nekoliko web aplikacija koje možete pronaći na mom Github profilu ili u portfelju.",
+    "aboutMe": "Ja sam frontend developer koji voli raditi u React-u. Izradio sam nekoliko web aplikacija koje možete pronaći na mom Github profilu ili u portfoliu.",
     "buttons": {
-      "portfolio": "Portfelj",
-      "resume": "Biografski podaci"
+      "portfolio": "Portfolio",
+      "resume": "Životopis"
     },
     "whatIDo": {
       "title": "Što radim",
-      "description": "Završio sam stručni studij informatike na FERIT-u u Osijeku te sam također završio edukaciju u trajanju od 1 godine za Frontend developera na Visokom učilištu Algebra. Trenutno tražim posao gdje mogu naučiti i usavršavati se u frontend developmentu. U nastavku su ukratko prikazane moje tehničke vještine i tehnologije koje koristim. Želite li više saznati o mom iskustvu? Pogledajte moj online životopis i portfelj projekata."
+      "description": "Završio sam stručni studij informatike na FERIT-u u Osijeku te sam također završio edukaciju u trajanju od 1 godine za Frontend developera na Visokom učilištu Algebra. Trenutno tražim posao gdje mogu naučiti i usavršavati se u frontend developmentu. U nastavku su ukratko prikazane moje tehničke vještine i tehnologije koje koristim. Želite li više saznati o mom iskustvu? Pogledajte moj online životopis i portfolio projekata."
     },
     "featured": "Istaknuti projekti"
   },
 
   "portfolio": {
-    "title": "Portfelj",
-    "description": "Dobrodošli na moj online portfelj. Ovdje su prikazani moji osobni projekti kojima možete vidjeti demo uživo ili provjeriti kod na mom github profilu.",
+    "title": "Portfolio",
+    "description": "Dobrodošli na moj online portfolio. Ovdje su prikazani moji osobni projekti kojima možete vidjeti demo uživo ili provjeriti kod na mom github profilu.",
     "subtitle": "Moji projekti"
   },
 
   "resume": {
     "title": "Online životopis",
+    "subtitle": "Klikom na gumb ispod dobit ćete uvid u cijeli životopis.",
     "button": "Preuzmi PDF verziju"
   },
 
   "contact": {
     "title": "Kontakt",
-    "text1": "Zanima li vas da me zaposlite ili me samo želite pozdraviti? Možete ispuniti kontakt formu u nastavku ili poslati mi email na",
+    "text1": "Zanima li vas da me zaposlite ili me samo želite pozdraviti? Možete ispuniti kontakt formu u nastavku ili mi poslati email na",
     "text2": "Želite se povezati? Možete me zapratiti na društvenim mrežama ispod.",
     "form_title": "Javite mi se",
     "form_name": "Ime",
@@ -44,7 +45,11 @@
     "form_button": "Pošalji",
     "form_name_error": "Potrebno je unijeti ime.",
     "form_email_error": "Potreban je unijeti email.",
-    "form_message_error": "Potrebno je unijeti poruku."
+    "form_message_error": "Potrebno je unijeti poruku.",
+    "toast_success_title": "Poruka je poslana.",
+    "toast_success_description": "Hvala na javljanju!",
+    "toast_error_title": "Nešto je pošlo po krivu.",
+    "toast_error_description": "Molim pokušajte ponovno."
   },
 
   "project": {
