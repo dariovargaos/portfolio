@@ -13,6 +13,7 @@ import {
   Heading,
   Icon,
   Image,
+  Progress,
   SimpleGrid,
   Spinner,
   Stack,
@@ -35,7 +36,7 @@ import { AiOutlineConsoleSql } from "react-icons/ai";
 import { SiMantine } from "react-icons/si";
 
 export default function AboutMe() {
-  const { data: projects, isLoading, error } = useFirestore();
+  const { data: projects, isLoading, isError, error } = useFirestore();
   const navigate = useNavigate();
   const { t } = useTranslation("global");
   const { language } = useLanguage();
@@ -158,38 +159,44 @@ export default function AboutMe() {
           <Box borderLeft="5px solid #54B689"></Box>
           <Heading size="lg">{t("aboutMe.featured")}</Heading>
         </Flex>
-        <SimpleGrid
-          minChildWidth={isSmallScreen ? "250px" : "150px"}
-          spacing="40px"
-        >
-          {featuredProjects?.map((project) => (
-            <Card
-              key={project.id}
-              direction="column"
-              _hover={{ cursor: "pointer" }}
-              onClick={() => navigate(`/project/${project.id}`)}
-            >
-              {isLoading ? (
-                <Spinner color="#38A169" />
-              ) : (
-                <Image src={project.image} w="100%" />
-              )}
+        {isLoading && <Progress colorScheme="green" isIndeterminate />}
+        {isError ? (
+          <Text>{error.message}</Text>
+        ) : (
+          <SimpleGrid
+            minChildWidth={isSmallScreen ? "250px" : "150px"}
+            spacing="40px"
+          >
+            {featuredProjects?.map((project) => (
+              <Card
+                key={project.id}
+                direction="column"
+                _hover={{ cursor: "pointer" }}
+                onClick={() => navigate(`/project/${project.id}`)}
+              >
+                {isLoading ? (
+                  <Spinner color="#38A169" />
+                ) : (
+                  <Image src={project.image} w="100%" />
+                )}
 
-              <Stack>
-                <CardBody>
-                  <Heading size="md">{project.name}</Heading>
+                <Stack>
+                  <CardBody>
+                    <Heading size="md">{project.name}</Heading>
 
-                  <Text py={2}>
-                    {language === "en"
-                      ? project.description.substring(0, 100)
-                      : project.description_cro.substring(0, 100)}
-                    ...
-                  </Text>
-                </CardBody>
-              </Stack>
-            </Card>
-          ))}
-        </SimpleGrid>
+                    <Text py={2}>
+                      {language === "en"
+                        ? project.description.substring(0, 100)
+                        : project.description_cro.substring(0, 100)}
+                      ...
+                    </Text>
+                  </CardBody>
+                </Stack>
+              </Card>
+            ))}
+          </SimpleGrid>
+        )}
+
         <Flex justify="center">
           <Button
             leftIcon={<FaArrowAltCircleRight />}
