@@ -50,6 +50,7 @@ export default function AboutMe() {
     base: true,
     lg: false,
   });
+
   return (
     <Box>
       <Flex
@@ -61,7 +62,9 @@ export default function AboutMe() {
         borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
       >
         <Flex flexDir="column" gap={3}>
-          <Heading fontWeight="bold">Dario Varga</Heading>
+          <Heading as="h1" fontWeight="bold">
+            Dario Varga
+          </Heading>
           <Text fontSize="lg" color="gray.500">
             Junior Frontend Developer
           </Text>
@@ -93,7 +96,9 @@ export default function AboutMe() {
       <Flex flexDir="column" p={8} gap={4}>
         <Flex gap={5}>
           <Box borderLeft="5px solid #54B689"></Box>
-          <Heading size="lg">{t("aboutMe.whatIDo.title")}</Heading>
+          <Heading as="h2" size="lg">
+            {t("aboutMe.whatIDo.title")}
+          </Heading>
         </Flex>
         <Text>{t("aboutMe.whatIDo.description")}</Text>
         <Flex
@@ -153,7 +158,9 @@ export default function AboutMe() {
       <Flex flexDir="column" p={8} gap={5}>
         <Flex gap={5}>
           <Box borderLeft="5px solid #54B689"></Box>
-          <Heading size="lg">{t("aboutMe.featured")}</Heading>
+          <Heading as="h2" size="lg">
+            {t("aboutMe.featured")}
+          </Heading>
         </Flex>
         {isLoading && <Progress colorScheme="green" isIndeterminate />}
         {isError ? (
@@ -178,7 +185,9 @@ export default function AboutMe() {
 
                 <Stack>
                   <CardBody>
-                    <Heading size="md">{project.name}</Heading>
+                    <Heading as="h3" size="md">
+                      {project.name}
+                    </Heading>
 
                     <Text py={2}>
                       {language === "en"

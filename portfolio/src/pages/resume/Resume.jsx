@@ -54,7 +54,9 @@ export default function AboutMe() {
         minH="200px"
         borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
       >
-        <Heading fontWeight="bold">{t("resume.title")}</Heading>
+        <Heading as="h1" fontWeight="bold">
+          {t("resume.title")}
+        </Heading>
         <Text>{t("resume.subtitle")}</Text>
         <Button
           leftIcon={<FaFilePdf />}

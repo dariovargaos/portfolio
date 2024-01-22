@@ -93,7 +93,9 @@ export default function Contact() {
         p={isSmallScreen ? 3 : 0}
         borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
       >
-        <Heading fontWeight="bold">{t("contact.title")}</Heading>
+        <Heading as="h1" fontWeight="bold">
+          {t("contact.title")}
+        </Heading>
         <Text textAlign={isSmallScreen ? "center" : ""}>
           {t("contact.text1")}{" "}
           <Link color="#38A169" href="mailto:dario.varga2012@gmail.com">
@@ -155,7 +157,9 @@ export default function Contact() {
       </Flex>
 
       <Flex flexDir="column" p={8} gap={5}>
-        <Heading alignSelf="center">{t("contact.form_title")}</Heading>
+        <Heading as="h2" alignSelf="center">
+          {t("contact.form_title")}
+        </Heading>
 
         <form
           onSubmit={handleSubmit(onSubmit)}

@@ -41,7 +41,9 @@ export default function AboutMe() {
         p={isSmallScreen ? 3 : 0}
         borderBottom={colorMode === "dark" ? "1px solid gray" : ""}
       >
-        <Heading fontWeight="bold">{t("portfolio.title")}</Heading>
+        <Heading as="h1" fontWeight="bold">
+          {t("portfolio.title")}
+        </Heading>
         <Text>{t("portfolio.description")}</Text>
       </Flex>
 
@@ -51,7 +53,9 @@ export default function AboutMe() {
         <Flex flexDir="column" p={8} gap={4}>
           <Flex gap={5}>
             <Box borderLeft="5px solid #54B689"></Box>
-            <Heading size="lg">{t("portfolio.subtitle")}</Heading>
+            <Heading as="h2" size="lg">
+              {t("portfolio.subtitle")}
+            </Heading>
           </Flex>
 
           {isError ? (
@@ -74,7 +78,9 @@ export default function AboutMe() {
 
                     <Stack>
                       <CardBody>
-                        <Heading size="md">{project.name}</Heading>
+                        <Heading as="h3" size="md">
+                          {project.name}
+                        </Heading>
 
                         <Text py={2}>
                           {language === "en"
