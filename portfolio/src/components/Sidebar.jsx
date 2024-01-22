@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavLink as RouterNavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useLanguage } from "../hooks/useLanguage";
+import { useStorage } from "../hooks/useStorage";
 import {
   Flex,
   HStack,
@@ -21,6 +22,7 @@ import {
   useBreakpointValue,
   useColorMode,
   useColorModeValue,
+  Spinner,
 } from "@chakra-ui/react";
 
 //icons
@@ -40,6 +42,7 @@ export default function Sidebar() {
   const { t } = useTranslation("global");
   const { language, changeLanguage } = useLanguage();
   const { colorMode, toggleColorMode } = useColorMode();
+  const { data, isError, error, isLoading } = useStorage();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDrawer = () => {
@@ -157,6 +160,7 @@ export default function Sidebar() {
               >
                 ENG
               </Button>
+
               <Divider orientation="vertical" />
               <Button
                 onClick={() => changeLanguage("cro")}
@@ -185,8 +189,8 @@ export default function Sidebar() {
                 <Image
                   borderRadius="full"
                   boxSize="150px"
-                  src="https://bit.ly/dan-abramov"
-                  alt="Dan Abramov"
+                  src={data?.[4].src}
+                  alt="Dario Varga"
                 />
                 <Text>{t("sidebar.aboutMe")}</Text>
                 <HStack spacing={4}>
@@ -262,12 +266,18 @@ export default function Sidebar() {
       )}
       {!isSmallScreen && (
         <>
-          <Image
-            borderRadius="full"
-            boxSize="150px"
-            src="https://bit.ly/dan-abramov"
-            alt="Dan Abramov"
-          />
+          {isLoading ? (
+            <Spinner size="xl" />
+          ) : (
+            <Image
+              borderRadius="full"
+              boxSize="150px"
+              src={data?.[4].src}
+              alt="Dario Varga"
+            />
+          )}
+          {isError && <Text>{error.message}</Text>}
+
           <Text>{t("sidebar.aboutMe")}</Text>
           <HStack spacing={4}>
             <Link

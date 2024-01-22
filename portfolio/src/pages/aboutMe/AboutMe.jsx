@@ -85,11 +85,7 @@ export default function AboutMe() {
         </Flex>
         {!isSmallScreen && (
           <Box>
-            <Image
-              w="250px"
-              src="https://bit.ly/dan-abramov"
-              alt="Dan Abramov"
-            />
+            <Image w="250px" fallbackSrc="https://via.placeholder.com/150" />
           </Box>
         )}
       </Flex>
