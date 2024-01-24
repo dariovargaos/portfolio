@@ -86,11 +86,11 @@ export default function AboutMe() {
             </Button>
           </ButtonGroup>
         </Flex>
-        {!isSmallScreen && (
+        {/* {!isSmallScreen && (
           <Box>
             <Image w="250px" fallbackSrc="https://via.placeholder.com/150" />
           </Box>
-        )}
+        )} */}
       </Flex>
 
       <Flex flexDir="column" p={8} gap={4}>

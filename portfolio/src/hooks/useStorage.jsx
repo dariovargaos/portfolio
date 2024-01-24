@@ -6,7 +6,7 @@ import { ref, getDownloadURL } from "firebase/storage";
 const fetchCoverImages = async () => {
   const imagePaths = [
     "Professional CV Resume Croatian image.png",
-    "Professional CV Resume image.png",
+    "Professional CV Resume English image.png",
     "CV - Dario Varga.pdf",
     "CV English - Dario Varga.pdf",
     "ja-modified.png",

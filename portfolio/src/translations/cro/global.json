@@ -10,7 +10,7 @@
   },
 
   "aboutMe": {
-    "aboutMe": "Ja sam frontend developer koji voli raditi u React-u. Izradio sam nekoliko web aplikacija koje možete pronaći na mom Github profilu ili u portfoliu.",
+    "aboutMe": "Ja sam frontend developer koji voli raditi u React-u i veselim se novim prilikama koje mogu poboljšati moje vještine. Izradio sam nekoliko web aplikacija koje možete pronaći na mom Github profilu ili u portfoliu.",
     "buttons": {
       "portfolio": "Portfolio",
       "resume": "Životopis"

@@ -28,7 +28,6 @@ export default function AboutMe() {
   const { language } = useLanguage();
   const { colorMode } = useColorMode();
   const { data, isLoading, isError, error } = useStorage();
-  console.log(data);
 
   const isSmallScreen = useBreakpointValue({
     base: true,
@@ -76,7 +75,7 @@ export default function AboutMe() {
           ) : (
             <Image
               w={isSmallScreen ? "100%" : "60%"}
-              src={language === "en" ? data?.[0].src : data?.[1].src}
+              src={language === "en" ? data?.[1].src : data?.[0].src}
               onClick={
                 isMobile ? () => setIsOpen(true) : () => setIsOpen(false)
               }
