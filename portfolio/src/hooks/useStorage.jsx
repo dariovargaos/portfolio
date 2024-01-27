@@ -9,7 +9,8 @@ const fetchCoverImages = async () => {
     "Professional CV Resume English image.png",
     "CV - Dario Varga.pdf",
     "CV English - Dario Varga.pdf",
-    "ja-modified.png",
+    "ja BW-modified.png",
+    "ja retro-modified.png",
   ];
 
   const coverImages = await Promise.all(
